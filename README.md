@@ -12,7 +12,7 @@
 
 **Copy anything on screen in a [Herdr](https://herdr.dev) pane, without the mouse.** Press a key and every URL, path, git SHA, UUID, and IP address gets a short hint. Type the hint and the text is on your clipboard. Open a URL or a file the same way.
 
-![Herdr Yank: hints over the URLs, paths, git SHAs, and other tokens of a pane](docs/images/yank-picker.png)
+![Herdr Yank demo: prefix y puts hints over a deploy log, one hint copies the URL, and Tab multi-select copies both pod names](assets/demo.gif)
 
 Inspired by [tmux-fingers](https://github.com/Morantron/tmux-fingers). A fork of [rmarganti/herdr-pluck](https://github.com/rmarganti/herdr-pluck), see [what is different](#differences-from-upstream).
 
@@ -68,6 +68,8 @@ Hints grow to two letters past 26 matches, and to three past 676. After the firs
 ## What gets a hint
 
 Built-in patterns, in priority order. When two matches overlap, the higher row wins.
+
+![Hints over each kind of token: URLs, git status and diff paths, Kubernetes resources, paths, a UUID, git SHAs, hex, an IP, and a custom pattern](docs/images/yank-picker.png)
 
 | Pattern | Matches | Copies |
 | --- | --- | --- |
@@ -184,7 +186,7 @@ HERDR_YANK_BUILD_FROM_SOURCE=1 ./scripts/install-binary.sh   # or build this che
 herdr plugin link .
 ```
 
-Run the script again after each change. Before you send a change, run `cargo fmt --all --check`, `cargo test --locked --workspace --all-features`, and `cargo clippy --locked --workspace --all-targets --all-features -- -D warnings`.
+Run the script again after each change. To record `assets/demo.gif` again, run `scripts/record-demo.sh` (needs [VHS](https://github.com/charmbracelet/vhs)). Before you send a change, run `cargo fmt --all --check`, `cargo test --locked --workspace --all-features`, and `cargo clippy --locked --workspace --all-targets --all-features -- -D warnings`.
 
 To release, set the same version in `Cargo.toml` and `herdr-plugin.toml`, then push a tag `v<version>`. The release workflow builds the binaries and publishes them with signed build provenance, which you can verify:
 
