@@ -1,0 +1,21 @@
+id = "pgilad.herdr-yank"
+name = "Herdr Yank"
+version = "1.0.0"
+min_herdr_version = "0.7.4"
+description = "Inline keyboard hints for copying visible tokens or opening URLs and files from Herdr panes"
+platforms = ["linux", "macos"]
+
+[[build]]
+command = ["./scripts/install-binary.sh"]
+
+[[actions]]
+id = "yank"
+title = "Yank visible token"
+contexts = ["pane", "workspace"]
+command = ["./bin/herdr-yank", "open"]
+
+[[actions]]
+id = "open-url"
+title = "Open visible URL or file"
+contexts = ["pane", "workspace"]
+command = ["./bin/herdr-yank", "open-url"]
